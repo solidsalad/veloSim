@@ -38,3 +38,21 @@ def dict_to_pickle(filename, dict):
 def vals(list):
     vals = [x for x in list if x is not None]
     return vals
+
+def tick_to_time(tick):
+    minutes_per_day = 24 * 60
+    minutes_per_year = 365 * minutes_per_day
+
+    years = tick // minutes_per_year
+    tick %= minutes_per_year
+
+    days = tick // minutes_per_day
+    tick %= minutes_per_day
+
+    hours = tick // 60
+    minutes = tick % 60
+
+    return {"year": years, "day": days, "hour": hours, "minute": minutes}
+
+def timestamp(simTime):
+    return f'{str(simTime["hour"]).zfill(2)}:{str(simTime["minute"]).zfill(2)}'

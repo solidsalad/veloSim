@@ -1,5 +1,6 @@
 import random
 from parsers import json_to_dict, vals
+import json
 
 
 class Station():
@@ -80,6 +81,7 @@ class Gebruiker():
         self.naam = Gebruiker.generate_name()
         self.bikes = [None]
         self.maxBikes = 1
+        self.latestLog = ""
 
     def __str__(self):
         if (len(vals(self.bikes)) == 0):
@@ -108,8 +110,9 @@ class Gebruiker():
                         print(f"ERROR: {self.userType} {self.ID} cannot store bike {bike.ID}: station full")
                     else:
                         slot = emptySlots[random.randint(0, len(emptySlots)-1)]
+                        self.latestLog = f"stored {bike.ID} into slot {slot.ID} at station {station.ID}"
+                        print(f"log: user {self.ID} stored {bike.ID} into slot {slot.ID} at station {station.ID}")
                         slot.store_bike(bike)
-                        print(f"log: {self.userType} {self.ID} has stored {bike.ID} into slot {slot.ID} at station {station.ID}")
                         bike = None
                 i += 1
 
@@ -126,7 +129,7 @@ class Gebruiker():
                         print(f"ERROR: {self.userType} {self.ID} cannot get a bike: user already has max amount of bikes")
                     else:
                         slot = fullSlots[random.randint(0, len(fullSlots)-1)]
-                        print(f"log: {self.userType} {self.ID} has taken {slot.bike.ID} from slot {slot.ID} at station {station.ID}")
+                        self.latestLog = f"taken {slot.bike.ID} from slot {slot.ID} at station {station.ID}"
                         self.bikes[i] = slot.get_bike()
                 i += 1
         else:

@@ -1,7 +1,7 @@
 import time
 import random
 import keyboard
-from parsers import pickle_to_dict, dict_to_pickle, dict_to_json, json_to_dict, vals
+from parsers import pickle_to_dict, dict_to_pickle, dict_to_json, json_to_dict, vals, tick_to_time, timestamp
 from infoFill import save_data, gen_new_sim
 from getRandom import getRandom
 from classes import Rit
@@ -16,6 +16,8 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
         bikesInUse = []
         almost_empty = []
         almost_full = []
+        site_info = {}
+        userInfo = {}
         sim_minutes = 0
         sim_start = time.time()
 
@@ -30,6 +32,8 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
         almost_full = simfo["almost_full"]
         currently_transp = simfo["currently_transp"]
         available_transp = simfo["available_transp"]
+        site_info = json_to_dict("site_info.json")
+        userInfo = json_to_dict("user_info.json")
     
     data = pickle_to_dict("data.pkl")
     gebruikers = data["gebruikers"]
@@ -40,13 +44,23 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
     if (saveFile is None):
         available_transp = [transporteur for transporteur in transporteurs if (len(vals(transporteur.bikes)) < transporteur.maxBikes)]
         walking = [gebruiker for gebruiker in gebruikers if (len(vals(gebruiker.bikes)) < gebruiker.maxBikes)]
+        for gebruiker in gebruikers:
+            userInfo[f"{gebruiker.ID}"] = {}
+            userInfo[f"{gebruiker.ID}"]["name"] = f"{gebruiker.naam} ({gebruiker.ID})"
+            userInfo[f"{gebruiker.ID}"]["log"] = []
+        for transporteur in transporteurs:
+            userInfo[f"{transporteur.ID}"] = {}
+            userInfo[f"{transporteur.ID}"]["name"] = f"{transporteur.naam} ({transporteur.ID})"
+            userInfo[f"{transporteur.ID}"]["log"] = []
 
+    prev_sec = 0
     stop = False
 
     while (stop == False):
         sim_minutes += 1
         real_seconds = int(time.time() - sim_start)
         start_time = time.time()  # Start time of the iteration
+        simTime = tick_to_time(sim_minutes)
 
         #getting bike
         if (random.randint(1,3) == 1):
@@ -57,8 +71,24 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
                     if str(endTime) not in riders.keys():
                         riders[f"{endTime}"] = []
                     user = getRandom(walking)
-                    riders[f"{endTime}"].append(Rit(sim_minutes, endTime, user, getRandom(stations)))
+                    thisRit = Rit(sim_minutes, endTime, user, getRandom(stations))
+                    #log taking bike + timestamp
+                    userInfo[f"{user.ID}"]["log"].append({"timeStamp": timestamp(simTime), "message": user.latestLog})
+                    riders[f"{endTime}"].append(thisRit)
+                    #log to site info
+                    if (str(user.ID) in site_info.keys()):
+                        del site_info[f"{user.ID}"]
+                    userString = str(user)
+                    userBikes = [bike.ID for bike in user.bikes]
+                    site_info[f"{user.ID}"] = {"string": userString, "bikes": userBikes, "progress": 0, "timeTag": f"{timestamp(simTime)}", "start": sim_minutes, "end": endTime}
                     walking.remove(user)
+        
+        #updating progress for all riders
+        for moment in riders.values():
+            for rit in moment:
+                start = site_info[f"{rit.user.ID}"]["start"]
+                end = site_info[f"{rit.user.ID}"]["end"]
+                site_info[f"{rit.user.ID}"]["progress"] = int(((sim_minutes - start)/(end - start))*100)
 
         #returning bike
         if (str(sim_minutes) in riders.keys()):
@@ -68,6 +98,8 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
                         #end trip
                         rit.drop_bike(stat)
                         walking.append(rit.user)
+                        #log return of bike
+                        userInfo[f"{rit.user.ID}"]["log"].append({"timeStamp": timestamp(simTime), "message": rit.user.latestLog})
                     else:
                         #extend time and go to different station because current station is full
                         rit.endTime += random.randint(5,20)
@@ -120,7 +152,14 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
             del currently_transp[f"{sim_minutes}"]
         
         print(f"{sim_minutes} ({real_seconds} real time seconds)")
-        #stop complete loop
+        
+        ##update site info every real second
+        #if (prev_sec != real_seconds) or (prev_sec == 0):
+        #    dict_to_json("site_info", site_info)
+        #    dict_to_json("userInfo", userInfo)
+        ##stop complete loop
+
+        prev_sec = real_seconds
 
         elapsed_time = time.time() - start_time  # Elapsed time of the iteration
         remaining_time = (60.0/speed_factor) - elapsed_time  # Remaining time until one second
@@ -133,6 +172,8 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
     #save data for next time
     sim_save = {"runningTime": time.time() - sim_start, "sim_seconds": sim_minutes, "riders": riders, "walking": walking, "bikesInUse": bikesInUse, "almost_empty": almost_empty, "almost_full": almost_full, "currently_transp": currently_transp, "available_transp": available_transp}
     dict_to_pickle(saveTo, sim_save)
+    dict_to_json("site_info", site_info)
+    dict_to_json("userInfo", userInfo)
     save_data()
     
-loop(600, 'sim.pkl')
+loop(600)
