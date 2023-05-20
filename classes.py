@@ -45,6 +45,12 @@ class Fiets():
         self.ID = "f"+str(Fiets.ID)
         Fiets.ID += 1
         self.inUse = False
+    
+    def __str__(self):
+        if (self.inUse == False):
+            return f"fiets - ID {self.ID}: niet in gebruik"
+        else:
+            return f"fiets - ID {self.ID}: momenteel in gebruik"
 
 class Slot():
     ID = 0
@@ -90,13 +96,14 @@ class Gebruiker():
         lastName = Gebruiker.names["last names"][random.randint(0,(len(Gebruiker.names["last names"])-1))]
         return f"{firstName} {lastName}"
 
-    def user_store_bike(self, station):
+    def user_store_bike(self, station, amount=1):
         emptySlots = station.get_slots("empty")
         if (len(vals(self.bikes)) == 0):   
             print(f"ERROR: {self.userType} {self.ID} cannot store a bike because he doesn't have one")
         else:
+            i = 0
             for bike in self.bikes:
-                if (bike is not None):
+                if (bike is not None) and (i < amount):
                     if (len(emptySlots) == 0):
                         print(f"ERROR: {self.userType} {self.ID} cannot store bike {bike.ID}: station full")
                     else:
@@ -104,6 +111,7 @@ class Gebruiker():
                         slot.store_bike(bike)
                         print(f"log: {self.userType} {self.ID} has stored {bike.ID} into slot {slot.ID} at station {station.ID}")
                         bike = None
+                i += 1
 
     def user_get_bike(self, station, amount=1):
         if (amount <= self.maxBikes):
@@ -135,4 +143,21 @@ class Transporteur(Gebruiker):
         self.bikes = []
         for i in range(self.maxBikes):
             self.bikes.append(None)
+
+class Rit():
+    ID = 0
+    def __init__(self, startTime, endTime, user, station, amount=1):
+        self.ID = Rit.ID
+        Rit.ID += 1
+        self.startTime = startTime
+        self.endTime = endTime
+        self.user = user
+        self.user.user_get_bike(station, amount)
+        self.bikes = vals(self.user.bikes)
+        print(f"ride {self.ID} until {self.endTime} ({self.endTime - self.startTime} minutes) (user {self.user.ID} ({self.user.naam}), bike(s) {[bike.ID for bike in self.bikes]})")
+
+    def drop_bike(self, station, amount=1):
+        self.user.user_store_bike(station, amount)
+        self.bikes = self.user.bikes
+            
     
