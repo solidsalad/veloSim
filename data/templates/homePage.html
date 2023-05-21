@@ -28,7 +28,49 @@
     	<meta charset="UTF-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<link rel="stylesheet" href="homeStijl.css">
+        <style>
+            .meter {
+                box-sizing: content-box;
+                height: 3px; /* Can be anything */
+                position: relative;
+                margin: 20px 7px 20px 0; /* Just for demo spacing */
+                background: #555;
+                border-radius: 25px;    
+                padding: 3px;
+            }
+            .meter > span {
+                display: block;
+                height: 100%;
+                border-top-right-radius: 8px;
+                border-bottom-right-radius: 8px;
+                border-top-left-radius: 8px;
+                border-bottom-left-radius: 8px;
+                background-color: rgb(43, 194, 83);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .container {
+                display: flex;
+                flex-direction: row;
+                border-top: 2px solid black;
+                margin-right: 5vw;
+                margin-left: 5vw;
+            }
+
+            .container > * {
+                max-width: 55%;
+                height: 100%;
+            }
+
+            .progressBar{
+                margin-left: auto;
+            }
+
+            .rideLen {
+                text-align: center;
+            }
+        </style>
     	<title>home</title>
     </head>
     <body>
@@ -50,16 +92,16 @@
             {% for rider in riders %}
                 <div class="container">
                     <div class="info">
-                        <h3>{{ rider.string }}</h3>
-                        <p class="timestamp">started at {{ rider.timeTag }}</p>
+                        <a class="/{{ rider[0] }}" href="users/{{ rider[0] }}.html">{{ rider[1].string }}</a>
+                        <p class="timestamp">started at {{ rider[1].timeTag }}</p>
                     </div>
                     <div class="progressBar" style="width: 33%">
                         <div class="meter">
-                            <span style="width: {{ rider.progress }}%"></span>
-                            <p class="rideLen">ride length: {{ rider.end - rider.start }} minutes</p>
+                            <span style="width: {{ rider[1].progress }}%"></span>
+                            <p class="rideLen">ride length: {{ rider[1].end - rider[1].start }} minutes</p>
                         </div>
                     </div>
-                    <p class="percentage">{{ rider.progress }}%</p>
+                    <p class="percentage">{{ rider[1].progress }}%</p>
                 </div>
             {% endfor %}
         </ul>

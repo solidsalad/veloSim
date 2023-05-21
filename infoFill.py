@@ -1,6 +1,16 @@
 import random
 from parsers import json_to_dict, dict_to_pickle, pickle_to_dict
 from classes import *
+import os
+
+def delete_folder_content(folder_path):
+    for filename in os.listdir(folder_path):
+        file_path = os.path.join(folder_path, filename)
+        if os.path.isfile(file_path):
+            os.remove(file_path)
+        elif os.path.isdir(file_path):
+            delete_folder_content(file_path)
+            os.rmdir(file_path)
 
 
 def make_stations():
