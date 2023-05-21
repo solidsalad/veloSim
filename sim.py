@@ -201,4 +201,4 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
     dict_to_json("userInfo.json", userInfo)
     save_data()
     
-loop(60)
+loop(600, 'sim.pkl')

@@ -101,19 +101,21 @@
                 <p>day {{ day }}</p>
             </div>
             {% for rider in riders %}
-                <div class="container">
-                    <div class="info">
-                        <a class="/{{ rider[0] }}" href="users/{{ rider[0] }}.html">{{ rider[1].string }}</a>
-                        <p class="timestamp">started at {{ rider[1].timeTag }}</p>
-                    </div>
-                    <div class="progressBar" style="width: 33%">
-                        <div class="meter">
-                            <span style="width: {{ rider[1].progress }}%"></span>
-                            <p class="rideLen">ride length: {{ rider[1].end - rider[1].start }} minutes</p>
+                {% if rider[1].progress < 100 %}
+                    <div class="container">
+                        <div class="info">
+                            <a class="/{{ rider[0] }}" href="users/{{ rider[0] }}.html">{{ rider[1].string }}</a>
+                            <p class="timestamp">started at {{ rider[1].timeTag }}</p>
                         </div>
+                        <div class="progressBar" style="width: 33%">
+                            <div class="meter">
+                                <span style="width: {{ rider[1].progress }}%"></span>
+                                <p class="rideLen">ride length: {{ rider[1].end - rider[1].start }} minutes</p>
+                            </div>
+                        </div>
+                        <p class="percentage">{{ rider[1].progress }}%</p>
                     </div>
-                    <p class="percentage">{{ rider[1].progress }}%</p>
-                </div>
+                {% endif %}
             {% endfor %}
         </ul>
     </body>

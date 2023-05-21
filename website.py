@@ -42,5 +42,6 @@ def get_station_info(station):
     template = environment.get_template("station.html")
     with open(f"_site/stations/{station.ID}.html", mode="w", encoding="utf-8") as message:
         message.write(template.render(
+            naam = station.naam,
             thisStation = station
             ))
