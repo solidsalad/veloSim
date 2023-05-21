@@ -1,0 +1,67 @@
+<!--
+{
+    "u7562": {
+        "string": "gebruiker - ID u7562: 'Beavis Garfield' gebruikt fiets ID:f4072",
+        "bikes": [
+            "f4072"
+        ],
+        "progress": 97,
+        "timeTag": "00:01",
+        "start": 1,
+        "end": 40
+    },
+    "u12868": {
+        "string": "gebruiker - ID u12868: 'Charlotte Twain' gebruikt fiets ID:f1861",
+        "bikes": [
+            "f1861"
+        ],
+        "progress": 98,
+        "timeTag": "00:01",
+        "start": 1,
+        "end": 99
+    }
+}
+-->
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+    	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<link rel="stylesheet" href="homeStijl.css">
+    	<title>home</title>
+    </head>
+    <body>
+        <!--
+        {{ nav }}
+		<div class="content">
+			<h1 class ="{{ header }}">{{ header }}:</h1>
+			<ul>
+				{% for page in data %}
+					<li class="listing">
+						<a href="{{ page.fileName }}.html" class="title">{{ page.title }}</a>
+						<p>author: {{ page.author }}</p>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+        -->
+        <ul class="riders">
+            {% for rider in riders %}
+                <div class="container">
+                    <div class="info">
+                        <h3>{{ rider.string }}</h3>
+                        <p class="timestamp">started at {{ rider.timeTag }}</p>
+                    </div>
+                    <div class="progressBar" style="width: 33%">
+                        <div class="meter">
+                            <span style="width: {{ rider.progress }}%"></span>
+                            <p class="rideLen">ride length: {{ rider.end - rider.start }} minutes</p>
+                        </div>
+                    </div>
+                    <p class="percentage">{{ rider.progress }}%</p>
+                </div>
+            {% endfor %}
+        </ul>
+    </body>
+    </html>

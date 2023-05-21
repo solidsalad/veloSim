@@ -1,0 +1,41 @@
+.meter {
+    box-sizing: content-box;
+    height: 3px; /* Can be anything */
+    position: relative;
+    margin: 20px 7px 20px 0; /* Just for demo spacing */
+    background: #555;
+    border-radius: 25px;    
+    padding: 3px;
+  }
+  .meter > span {
+    display: block;
+    height: 100%;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background-color: rgb(43, 194, 83);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    border-top: 2px solid black;
+    margin-right: 5vw;
+    margin-left: 5vw;
+  }
+
+  .container > * {
+    max-width: 55%;
+    height: 100%;
+  }
+
+  .progressBar{
+    margin-left: auto;
+  }
+
+  .rideLen {
+    text-align: center;
+  }

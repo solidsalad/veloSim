@@ -33,7 +33,7 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
         currently_transp = simfo["currently_transp"]
         available_transp = simfo["available_transp"]
         site_info = json_to_dict("site_info.json")
-        userInfo = json_to_dict("user_info.json")
+        userInfo = json_to_dict("userInfo.json")
     
     data = pickle_to_dict("data.pkl")
     gebruikers = data["gebruikers"]
@@ -82,13 +82,6 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
                     userBikes = [bike.ID for bike in user.bikes]
                     site_info[f"{user.ID}"] = {"string": userString, "bikes": userBikes, "progress": 0, "timeTag": f"{timestamp(simTime)}", "start": sim_minutes, "end": endTime}
                     walking.remove(user)
-        
-        #updating progress for all riders
-        for moment in riders.values():
-            for rit in moment:
-                start = site_info[f"{rit.user.ID}"]["start"]
-                end = site_info[f"{rit.user.ID}"]["end"]
-                site_info[f"{rit.user.ID}"]["progress"] = int(((sim_minutes - start)/(end - start))*100)
 
         #returning bike
         if (str(sim_minutes) in riders.keys()):
@@ -106,7 +99,16 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
                         if str(rit.endTime) not in riders.keys():
                             riders[f"{rit.endTime}"] = []
                         riders[f"{rit.endTime}"].append(rit)
+                        site_info[f"{rit.user.ID}"]["end"] = rit.endTime
+                        userInfo[f"{rit.user.ID}"]["log"].append({"timeStamp": timestamp(simTime), "message": f"station {stat.ID} full: extending rit to {rit.endTime - rit.startTime} minutes"})
                 del riders[f"{sim_minutes}"]
+        
+                #updating progress for all riders
+        for moment in riders.values():
+            for rit in moment:
+                start = site_info[f"{rit.user.ID}"]["start"]
+                end = site_info[f"{rit.user.ID}"]["end"]
+                site_info[f"{rit.user.ID}"]["progress"] = int(((sim_minutes - start)/(end - start))*100)
                 
 
         #checking which stations are almost full
@@ -172,8 +174,8 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
     #save data for next time
     sim_save = {"runningTime": time.time() - sim_start, "sim_seconds": sim_minutes, "riders": riders, "walking": walking, "bikesInUse": bikesInUse, "almost_empty": almost_empty, "almost_full": almost_full, "currently_transp": currently_transp, "available_transp": available_transp}
     dict_to_pickle(saveTo, sim_save)
-    dict_to_json("site_info", site_info)
-    dict_to_json("userInfo", userInfo)
+    dict_to_json("site_info.json", site_info)
+    dict_to_json("userInfo.json", userInfo)
     save_data()
     
-loop(600)
+loop(600, 'sim.pkl')
