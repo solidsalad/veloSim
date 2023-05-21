@@ -4,7 +4,7 @@ import keyboard
 from parsers import pickle_to_dict, dict_to_pickle, dict_to_json, json_to_dict, vals, tick_to_time, timestamp
 from infoFill import save_data, gen_new_sim
 from getRandom import getRandom
-from website import get_home_page, get_user_page, get_station_list
+from website import get_home_page, get_user_page, get_station_list, get_station_info
 from infoFill import delete_folder_content
 from classes import Rit
 
@@ -173,12 +173,15 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
 
         #update site info every real second
         if (prev_sec != real_seconds) or (prev_sec == 0):
-            get_home_page(site_info)
+            get_home_page(site_info, simTime)
             for moment in riders.values():
                 for rit in moment:
                     #updating rider progress bar
                     get_user_page(site_info, rit.user.ID, userInfo)
-            #updating station info
+            #updating station info per station
+            for station in stations:
+                get_station_info(station)
+
 
         #stop complete loop
 

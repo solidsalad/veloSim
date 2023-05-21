@@ -40,6 +40,9 @@ def vals(list):
     return vals
 
 def tick_to_time(tick):
+    #setting starting time to 12 o clock
+    tick += 720
+    
     minutes_per_day = 24 * 60
     minutes_per_year = 365 * minutes_per_day
 

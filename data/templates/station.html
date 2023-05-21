@@ -5,27 +5,6 @@
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
-            .meter {
-                box-sizing: content-box;
-                height: 3px; /* Can be anything */
-                position: relative;
-                margin: 20px 7px 20px 0; /* Just for demo spacing */
-                background: #555;
-                border-radius: 25px;    
-                padding: 3px;
-            }
-            .meter > span {
-                display: block;
-                height: 100%;
-                border-top-right-radius: 8px;
-                border-bottom-right-radius: 8px;
-                border-top-left-radius: 8px;
-                border-bottom-left-radius: 8px;
-                background-color: rgb(43, 194, 83);
-                position: relative;
-                overflow: hidden;
-            }
-
             body {
                 margin-right: 5vw;
                 margin-left: 5vw;
@@ -56,14 +35,6 @@
                 padding: 30px 8%;
             }
 
-            .container {
-                display: grid;
-                gap: 4px;
-                padding: auto 8%;
-                padding-top: 30px;
-                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-            }
-
             button {
                 padding: 9px 25px;
                 background-color: rgb(255, 255, 255);
@@ -73,29 +44,24 @@
                 transition: all 0.3s ease 0s;
             }
 
-            .container button {
-                padding: 3px 12px;
-                height: 4rem;
-                width: 100%;
-            }
-
             button:hover {
                 background-color: rgba(0, 0, 0, 0.8);
                 color: white
             }
 
-
+            pre {
+                margin: 1rem;
+            }
         </style>
     	<title>home</title>
     </head>
     <body>
         <header>
             <a class="home" href="../home.html"><button>Home</button></a>
+            <a class="stations" href="../stations.html"><button>stations</button></a>
         </header>
         <div class="container">
-            {% for station in stations %}
-                <a class="station" href="stations/{{ station.ID }}.html"><button>{{ station.naam }}</button></a>
-            {% endfor %}
+            <pre>{{ thisStation }}</pre>
         </div>
     </body>
     </html>
