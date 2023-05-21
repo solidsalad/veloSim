@@ -1,812 +1,92 @@
 {
-    "u23711": {
-        "string": "gebruiker - ID u23711: 'Ethan Blender' gebruikt fiets ID:f544",
+    "u25255": {
+        "string": "gebruiker - ID u25255: 'Andrew Fry' gebruikt fiets ID:f1286",
         "bikes": [
-            "f544"
+            "f1286"
         ],
-        "progress": 56,
-        "timeTag": "00:01",
-        "start": 1,
-        "end": 75
+        "progress": 1,
+        "timeTag": "00:05",
+        "start": 5,
+        "end": 106
     },
-    "u38302": {
-        "string": "gebruiker - ID u38302: 'Liam Hulk' gebruikt fiets ID:f3227",
+    "u37987": {
+        "string": "gebruiker - ID u37987: 'Aria Gates' gebruikt fiets ID:f1544",
         "bikes": [
-            "f3227"
+            "f1544"
         ],
-        "progress": 56,
-        "timeTag": "00:04",
-        "start": 4,
-        "end": 73
+        "progress": 5,
+        "timeTag": "00:05",
+        "start": 5,
+        "end": 39
     },
-    "u12852": {
-        "string": "gebruiker - ID u12852: 'Bart Perez' gebruikt fiets ID:f2244",
+    "u42476": {
+        "string": "gebruiker - ID u42476: 'Jonathan Lindale Duchovny' gebruikt fiets ID:f222",
         "bikes": [
-            "f2244"
+            "f222"
         ],
-        "progress": 68,
-        "timeTag": "00:04",
-        "start": 4,
-        "end": 61
+        "progress": 5,
+        "timeTag": "00:05",
+        "start": 5,
+        "end": 44
     },
-    "u54315": {
-        "string": "gebruiker - ID u54315: 'Rick Lewis' gebruikt fiets ID:f3838",
+    "u38385": {
+        "string": "gebruiker - ID u38385: 'Jesse Winky' gebruikt fiets ID:f3993",
         "bikes": [
-            "f3838"
+            "f3993"
         ],
-        "progress": 39,
-        "timeTag": "00:04",
-        "start": 4,
-        "end": 102
+        "progress": 6,
+        "timeTag": "00:05",
+        "start": 5,
+        "end": 36
     },
-    "u16872": {
-        "string": "gebruiker - ID u16872: 'Jesse Addams' gebruikt fiets ID:f361",
+    "u15316": {
+        "string": "gebruiker - ID u15316: 'Zoe B. Jordan' gebruikt fiets ID:f702",
         "bikes": [
-            "f361"
+            "f702"
         ],
-        "progress": 71,
+        "progress": 3,
         "timeTag": "00:05",
         "start": 5,
         "end": 58
     },
-    "u5038": {
-        "string": "gebruiker - ID u5038: 'Riley Bryant' gebruikt fiets ID:f1705",
+    "u40058": {
+        "string": "gebruiker - ID u40058: 'Sofia Rodriguez' gebruikt fiets ID:f3668",
         "bikes": [
-            "f1705"
-        ],
-        "progress": 43,
-        "timeTag": "00:05",
-        "start": 5,
-        "end": 93
-    },
-    "u21465": {
-        "string": "gebruiker - ID u21465: 'Victoria Gandhi' gebruikt fiets ID:f1333",
-        "bikes": [
-            "f1333"
-        ],
-        "progress": 67,
-        "timeTag": "00:05",
-        "start": 5,
-        "end": 61
-    },
-    "u25797": {
-        "string": "gebruiker - ID u25797: 'William Nahasapeemapetilon' gebruikt fiets ID:f763",
-        "bikes": [
-            "f763"
-        ],
-        "progress": 65,
-        "timeTag": "00:16",
-        "start": 16,
-        "end": 57
-    },
-    "u41099": {
-        "string": "gebruiker - ID u41099: 'Hugo Adams' gebruikt fiets ID:f4093",
-        "bikes": [
-            "f4093"
-        ],
-        "progress": 45,
-        "timeTag": "00:16",
-        "start": 16,
-        "end": 75
-    },
-    "u23149": {
-        "string": "gebruiker - ID u23149: 'Joseph Mouse' gebruikt fiets ID:f3720",
-        "bikes": [
-            "f3720"
-        ],
-        "progress": 39,
-        "timeTag": "00:16",
-        "start": 16,
-        "end": 84
-    },
-    "u45360": {
-        "string": "gebruiker - ID u45360: 'Beavis Garfield' gebruikt fiets ID:f263",
-        "bikes": [
-            "f263"
-        ],
-        "progress": 60,
-        "timeTag": "00:16",
-        "start": 16,
-        "end": 61
-    },
-    "u36370": {
-        "string": "gebruiker - ID u36370: 'Alexander Fry' gebruikt fiets ID:f3750",
-        "bikes": [
-            "f3750"
-        ],
-        "progress": 43,
-        "timeTag": "00:16",
-        "start": 16,
-        "end": 78
-    },
-    "u45944": {
-        "string": "gebruiker - ID u45944: 'Charlotte Martinez' gebruikt fiets ID:f2999",
-        "bikes": [
-            "f2999"
-        ],
-        "progress": 53,
-        "timeTag": "00:17",
-        "start": 17,
-        "end": 66
-    },
-    "u7716": {
-        "string": "gebruiker - ID u7716: 'Amelia Davis' gebruikt fiets ID:f4123",
-        "bikes": [
-            "f4123"
-        ],
-        "progress": 34,
-        "timeTag": "00:17",
-        "start": 17,
-        "end": 92
-    },
-    "u5440": {
-        "string": "gebruiker - ID u5440: 'Rose zuckerberg' gebruikt fiets ID:f3158",
-        "bikes": [
-            "f3158"
-        ],
-        "progress": 31,
-        "timeTag": "00:17",
-        "start": 17,
-        "end": 100
-    },
-    "u44668": {
-        "string": "gebruiker - ID u44668: 'Jonathan Lindale Thomas' gebruikt fiets ID:f1867",
-        "bikes": [
-            "f1867"
-        ],
-        "progress": 21,
-        "timeTag": "00:17",
-        "start": 17,
-        "end": 136
-    },
-    "u7423": {
-        "string": "gebruiker - ID u7423: 'Maya Martinez' gebruikt fiets ID:f1683",
-        "bikes": [
-            "f1683"
-        ],
-        "progress": 33,
-        "timeTag": "00:17",
-        "start": 17,
-        "end": 95
-    },
-    "u4361": {
-        "string": "gebruiker - ID u4361: 'Emily Pudovkin' gebruikt fiets ID:f605",
-        "bikes": [
-            "f605"
-        ],
-        "progress": 37,
-        "timeTag": "00:17",
-        "start": 17,
-        "end": 87
-    },
-    "u49048": {
-        "string": "gebruiker - ID u49048: 'Hannah Epstein' gebruikt fiets ID:f2717",
-        "bikes": [
-            "f2717"
-        ],
-        "progress": 32,
-        "timeTag": "00:17",
-        "start": 17,
-        "end": 96
-    },
-    "u18806": {
-        "string": "gebruiker - ID u18806: 'Benjamin lemmens' gebruikt fiets ID:f2705",
-        "bikes": [
-            "f2705"
-        ],
-        "progress": 65,
-        "timeTag": "00:20",
-        "start": 20,
-        "end": 55
-    },
-    "u40082": {
-        "string": "gebruiker - ID u40082: 'Sophia zuckerberg' gebruikt fiets ID:f532",
-        "bikes": [
-            "f532"
-        ],
-        "progress": 41,
-        "timeTag": "00:20",
-        "start": 20,
-        "end": 75
-    },
-    "u13669": {
-        "string": "gebruiker - ID u13669: 'Philip Garcia' gebruikt fiets ID:f4036",
-        "bikes": [
-            "f4036"
-        ],
-        "progress": 100,
-        "timeTag": "00:20",
-        "start": 20,
-        "end": 40
-    },
-    "u28736": {
-        "string": "gebruiker - ID u28736: 'Matthew Tolkien' gebruikt fiets ID:f637",
-        "bikes": [
-            "f637"
-        ],
-        "progress": 39,
-        "timeTag": "00:21",
-        "start": 21,
-        "end": 77
-    },
-    "u40620": {
-        "string": "gebruiker - ID u40620: 'Charlotte Harrison' gebruikt fiets ID:f1672",
-        "bikes": [
-            "f1672"
-        ],
-        "progress": 32,
-        "timeTag": "00:24",
-        "start": 24,
-        "end": 83
-    },
-    "u16002": {
-        "string": "gebruiker - ID u16002: 'Philip Garcia' gebruikt fiets ID:f161",
-        "bikes": [
-            "f161"
-        ],
-        "progress": 60,
-        "timeTag": "00:26",
-        "start": 26,
-        "end": 54
-    },
-    "u4220": {
-        "string": "gebruiker - ID u4220: 'Charlotte Lemming' gebruikt fiets ID:f1748",
-        "bikes": [
-            "f1748"
-        ],
-        "progress": 56,
-        "timeTag": "00:26",
-        "start": 26,
-        "end": 56
-    },
-    "u32441": {
-        "string": "gebruiker - ID u32441: 'Charlotte Grinch' gebruikt fiets ID:f3608",
-        "bikes": [
-            "f3608"
-        ],
-        "progress": 16,
-        "timeTag": "00:26",
-        "start": 26,
-        "end": 132
-    },
-    "u36024": {
-        "string": "gebruiker - ID u36024: 'Louis Jackson' gebruikt fiets ID:f3885",
-        "bikes": [
-            "f3885"
-        ],
-        "progress": 62,
-        "timeTag": "00:26",
-        "start": 26,
-        "end": 53
-    },
-    "u29479": {
-        "string": "gebruiker - ID u29479: 'Philip lemmens' gebruikt fiets ID:f3730",
-        "bikes": [
-            "f3730"
-        ],
-        "progress": 14,
-        "timeTag": "00:26",
-        "start": 26,
-        "end": 143
-    },
-    "u25061": {
-        "string": "gebruiker - ID u25061: 'Samuel lemmens' gebruikt fiets ID:f1101",
-        "bikes": [
-            "f1101"
-        ],
-        "progress": 70,
-        "timeTag": "00:26",
-        "start": 26,
-        "end": 50
-    },
-    "u27302": {
-        "string": "gebruiker - ID u27302: 'Victor Gonzalez' gebruikt fiets ID:f1779",
-        "bikes": [
-            "f1779"
-        ],
-        "progress": 45,
-        "timeTag": "00:26",
-        "start": 26,
-        "end": 63
-    },
-    "u19740": {
-        "string": "gebruiker - ID u19740: 'Beavis Ford' gebruikt fiets ID:f1677",
-        "bikes": [
-            "f1677"
-        ],
-        "progress": 14,
-        "timeTag": "00:26",
-        "start": 26,
-        "end": 142
-    },
-    "u42251": {
-        "string": "gebruiker - ID u42251: 'Valentina Pluto' gebruikt fiets ID:f2777",
-        "bikes": [
-            "f2777"
-        ],
-        "progress": 41,
-        "timeTag": "00:26",
-        "start": 26,
-        "end": 67
-    },
-    "u7429": {
-        "string": "gebruiker - ID u7429: 'Nathan Gorbatsjov' gebruikt fiets ID:f177",
-        "bikes": [
-            "f177"
-        ],
-        "progress": 69,
-        "timeTag": "00:27",
-        "start": 27,
-        "end": 50
-    },
-    "u6477": {
-        "string": "gebruiker - ID u6477: 'Simon Neptune' gebruikt fiets ID:f334",
-        "bikes": [
-            "f334"
-        ],
-        "progress": 16,
-        "timeTag": "00:27",
-        "start": 27,
-        "end": 125
-    },
-    "u14246": {
-        "string": "gebruiker - ID u14246: 'Rose Jones' gebruikt fiets ID:f4069",
-        "bikes": [
-            "f4069"
-        ],
-        "progress": 39,
-        "timeTag": "00:27",
-        "start": 27,
-        "end": 68
-    },
-    "u34197": {
-        "string": "gebruiker - ID u34197: 'Theo Campbell' gebruikt fiets ID:f2560",
-        "bikes": [
-            "f2560"
-        ],
-        "progress": 72,
-        "timeTag": "00:27",
-        "start": 27,
-        "end": 49
-    },
-    "u52685": {
-        "string": "gebruiker - ID u52685: 'Stella Bond' gebruikt fiets ID:f2060",
-        "bikes": [
-            "f2060"
-        ],
-        "progress": 14,
-        "timeTag": "00:27",
-        "start": 27,
-        "end": 137
-    },
-    "u54564": {
-        "string": "gebruiker - ID u54564: 'Jonathan Kong' gebruikt fiets ID:f2574",
-        "bikes": [
-            "f2574"
-        ],
-        "progress": 24,
-        "timeTag": "00:28",
-        "start": 28,
-        "end": 89
-    },
-    "u484": {
-        "string": "gebruiker - ID u484: 'Beavis Blender' gebruikt fiets ID:f2041",
-        "bikes": [
-            "f2041"
-        ],
-        "progress": 35,
-        "timeTag": "00:29",
-        "start": 29,
-        "end": 68
-    },
-    "u24443": {
-        "string": "gebruiker - ID u24443: 'Richard SpongeBob' gebruikt fiets ID:f503",
-        "bikes": [
-            "f503"
-        ],
-        "progress": 16,
-        "timeTag": "00:29",
-        "start": 29,
-        "end": 115
-    },
-    "u53203": {
-        "string": "gebruiker - ID u53203: 'Scarlett Neptune' gebruikt fiets ID:f965",
-        "bikes": [
-            "f965"
-        ],
-        "progress": 14,
-        "timeTag": "00:29",
-        "start": 29,
-        "end": 128
-    },
-    "u29101": {
-        "string": "gebruiker - ID u29101: 'Mark Twain' gebruikt fiets ID:f4060",
-        "bikes": [
-            "f4060"
-        ],
-        "progress": 30,
-        "timeTag": "00:29",
-        "start": 29,
-        "end": 75
-    },
-    "u32301": {
-        "string": "gebruiker - ID u32301: 'Oliver Green' gebruikt fiets ID:f2650",
-        "bikes": [
-            "f2650"
-        ],
-        "progress": 17,
-        "timeTag": "00:29",
-        "start": 29,
-        "end": 110
-    },
-    "u30322": {
-        "string": "gebruiker - ID u30322: 'Antonio Lee' gebruikt fiets ID:f3337",
-        "bikes": [
-            "f3337"
-        ],
-        "progress": 18,
-        "timeTag": "00:29",
-        "start": 29,
-        "end": 103
-    },
-    "u45717": {
-        "string": "gebruiker - ID u45717: 'Anthony Feynman' gebruikt fiets ID:f2784",
-        "bikes": [
-            "f2784"
-        ],
-        "progress": 12,
-        "timeTag": "00:29",
-        "start": 29,
-        "end": 138
-    },
-    "u26557": {
-        "string": "gebruiker - ID u26557: 'Sarah Swarofski' gebruikt fiets ID:f20",
-        "bikes": [
-            "f20"
-        ],
-        "progress": 27,
-        "timeTag": "00:29",
-        "start": 29,
-        "end": 80
-    },
-    "u27783": {
-        "string": "gebruiker - ID u27783: 'Hannah Simpson' gebruikt fiets ID:f1292",
-        "bikes": [
-            "f1292"
-        ],
-        "progress": 19,
-        "timeTag": "00:31",
-        "start": 31,
-        "end": 92
-    },
-    "u20985": {
-        "string": "gebruiker - ID u20985: 'Maria Zoidberg' gebruikt fiets ID:f303",
-        "bikes": [
-            "f303"
-        ],
-        "progress": 11,
-        "timeTag": "00:31",
-        "start": 31,
-        "end": 134
-    },
-    "u24583": {
-        "string": "gebruiker - ID u24583: 'Camila E. Plier' gebruikt fiets ID:f3858",
-        "bikes": [
-            "f3858"
-        ],
-        "progress": 48,
-        "timeTag": "00:31",
-        "start": 31,
-        "end": 56
-    },
-    "u6851": {
-        "string": "gebruiker - ID u6851: 'Emily devos' gebruikt fiets ID:f1220",
-        "bikes": [
-            "f1220"
-        ],
-        "progress": 8,
-        "timeTag": "00:34",
-        "start": 34,
-        "end": 140
-    },
-    "u21259": {
-        "string": "gebruiker - ID u21259: 'Alice Miller' gebruikt fiets ID:f2757",
-        "bikes": [
-            "f2757"
-        ],
-        "progress": 12,
-        "timeTag": "00:34",
-        "start": 34,
-        "end": 107
-    },
-    "u45866": {
-        "string": "gebruiker - ID u45866: 'Antonio Rodriguez' gebruikt fiets ID:f3976",
-        "bikes": [
-            "f3976"
-        ],
-        "progress": 8,
-        "timeTag": "00:34",
-        "start": 34,
-        "end": 145
-    },
-    "u47309": {
-        "string": "gebruiker - ID u47309: 'Nicolai zuckerberg' gebruikt fiets ID:f2885",
-        "bikes": [
-            "f2885"
-        ],
-        "progress": 14,
-        "timeTag": "00:34",
-        "start": 34,
-        "end": 96
-    },
-    "u10496": {
-        "string": "gebruiker - ID u10496: 'Alexander Jup' gebruikt fiets ID:f3895",
-        "bikes": [
-            "f3895"
-        ],
-        "progress": 8,
-        "timeTag": "00:34",
-        "start": 34,
-        "end": 144
-    },
-    "u23625": {
-        "string": "gebruiker - ID u23625: 'Beavis Pluto' gebruikt fiets ID:f2459",
-        "bikes": [
-            "f2459"
-        ],
-        "progress": 12,
-        "timeTag": "00:34",
-        "start": 34,
-        "end": 108
-    },
-    "u4461": {
-        "string": "gebruiker - ID u4461: 'Eric Snoopy' gebruikt fiets ID:f368",
-        "bikes": [
-            "f368"
-        ],
-        "progress": 11,
-        "timeTag": "00:34",
-        "start": 34,
-        "end": 110
-    },
-    "u1986": {
-        "string": "gebruiker - ID u1986: 'Laura Cook' gebruikt fiets ID:f3779",
-        "bikes": [
-            "f3779"
-        ],
-        "progress": 7,
-        "timeTag": "00:36",
-        "start": 36,
-        "end": 125
-    },
-    "u54309": {
-        "string": "gebruiker - ID u54309: 'Luna Flintstone' gebruikt fiets ID:f1887",
-        "bikes": [
-            "f1887"
-        ],
-        "progress": 6,
-        "timeTag": "00:36",
-        "start": 36,
-        "end": 151
-    },
-    "u53842": {
-        "string": "gebruiker - ID u53842: 'Rick Simpson' gebruikt fiets ID:f3524",
-        "bikes": [
-            "f3524"
-        ],
-        "progress": 8,
-        "timeTag": "00:36",
-        "start": 36,
-        "end": 115
-    },
-    "u9483": {
-        "string": "gebruiker - ID u9483: 'Aria Hibbert' gebruikt fiets ID:f2272",
-        "bikes": [
-            "f2272"
-        ],
-        "progress": 6,
-        "timeTag": "00:36",
-        "start": 36,
-        "end": 141
-    },
-    "u10096": {
-        "string": "gebruiker - ID u10096: 'Oliver Mercury' gebruikt fiets ID:f1055",
-        "bikes": [
-            "f1055"
-        ],
-        "progress": 5,
-        "timeTag": "00:38",
-        "start": 38,
-        "end": 135
-    },
-    "u16359": {
-        "string": "gebruiker - ID u16359: 'Lara B. Jordan' gebruikt fiets ID:f3021",
-        "bikes": [
-            "f3021"
-        ],
-        "progress": 7,
-        "timeTag": "00:38",
-        "start": 38,
-        "end": 103
-    },
-    "u38959": {
-        "string": "gebruiker - ID u38959: 'Paul Hogan' gebruikt fiets ID:f2500",
-        "bikes": [
-            "f2500"
-        ],
-        "progress": 5,
-        "timeTag": "00:38",
-        "start": 38,
-        "end": 127
-    },
-    "u31062": {
-        "string": "gebruiker - ID u31062: 'Daniel Kirk' gebruikt fiets ID:f3147",
-        "bikes": [
-            "f3147"
-        ],
-        "progress": 19,
-        "timeTag": "00:38",
-        "start": 38,
-        "end": 64
-    },
-    "u31309": {
-        "string": "gebruiker - ID u31309: 'Nicolai Simpson' gebruikt fiets ID:f1172",
-        "bikes": [
-            "f1172"
-        ],
-        "progress": 4,
-        "timeTag": "00:38",
-        "start": 38,
-        "end": 153
-    },
-    "u40018": {
-        "string": "gebruiker - ID u40018: 'George Kong' gebruikt fiets ID:f935",
-        "bikes": [
-            "f935"
-        ],
-        "progress": 4,
-        "timeTag": "00:38",
-        "start": 38,
-        "end": 154
-    },
-    "u10628": {
-        "string": "gebruiker - ID u10628: 'Jesse Winky' gebruikt fiets ID:f127",
-        "bikes": [
-            "f127"
-        ],
-        "progress": 9,
-        "timeTag": "00:38",
-        "start": 38,
-        "end": 92
-    },
-    "u3072": {
-        "string": "gebruiker - ID u3072: 'Leah Hudson' gebruikt fiets ID:f1699",
-        "bikes": [
-            "f1699"
-        ],
-        "progress": 15,
-        "timeTag": "00:38",
-        "start": 38,
-        "end": 71
-    },
-    "u4760": {
-        "string": "gebruiker - ID u4760: 'Nora Jupiter' gebruikt fiets ID:f2225",
-        "bikes": [
-            "f2225"
-        ],
-        "progress": 12,
-        "timeTag": "00:38",
-        "start": 38,
-        "end": 77
-    },
-    "u21503": {
-        "string": "gebruiker - ID u21503: 'Luna Kong' gebruikt fiets ID:f2852",
-        "bikes": [
-            "f2852"
-        ],
-        "progress": 5,
-        "timeTag": "00:38",
-        "start": 38,
-        "end": 135
-    },
-    "u39055": {
-        "string": "gebruiker - ID u39055: 'Walter Garcia' gebruikt fiets ID:f4089",
-        "bikes": [
-            "f4089"
-        ],
-        "progress": 11,
-        "timeTag": "00:40",
-        "start": 40,
-        "end": 67
-    },
-    "u47769": {
-        "string": "gebruiker - ID u47769: 'Rose Pluto' gebruikt fiets ID:f3751",
-        "bikes": [
-            "f3751"
-        ],
-        "progress": 1,
-        "timeTag": "00:41",
-        "start": 41,
-        "end": 156
-    },
-    "u14698": {
-        "string": "gebruiker - ID u14698: 'Hugo Jackson' gebruikt fiets ID:f1406",
-        "bikes": [
-            "f1406"
-        ],
-        "progress": 4,
-        "timeTag": "00:41",
-        "start": 41,
-        "end": 84
-    },
-    "u618": {
-        "string": "gebruiker - ID u618: 'Martin Mercury' gebruikt fiets ID:f2139",
-        "bikes": [
-            "f2139"
-        ],
-        "progress": 4,
-        "timeTag": "00:41",
-        "start": 41,
-        "end": 85
-    },
-    "u51064": {
-        "string": "gebruiker - ID u51064: 'Sophia Mouse' gebruikt fiets ID:f2991",
-        "bikes": [
-            "f2991"
-        ],
-        "progress": 3,
-        "timeTag": "00:41",
-        "start": 41,
-        "end": 105
-    },
-    "u11021": {
-        "string": "gebruiker - ID u11021: 'Jesse Hibbert' gebruikt fiets ID:f1272",
-        "bikes": [
-            "f1272"
+            "f3668"
         ],
         "progress": 2,
-        "timeTag": "00:41",
-        "start": 41,
-        "end": 111
+        "timeTag": "00:05",
+        "start": 5,
+        "end": 96
     },
-    "u28935": {
-        "string": "gebruiker - ID u28935: 'Nathan Mercury' gebruikt fiets ID:f2141",
+    "u4460": {
+        "string": "gebruiker - ID u4460: 'Philip Bond' gebruikt fiets ID:f2530",
         "bikes": [
-            "f2141"
+            "f2530"
+        ],
+        "progress": 2,
+        "timeTag": "00:06",
+        "start": 6,
+        "end": 51
+    },
+    "u49417": {
+        "string": "gebruiker - ID u49417: 'Alexander Uranus' gebruikt fiets ID:f944",
+        "bikes": [
+            "f944"
         ],
         "progress": 1,
-        "timeTag": "00:41",
-        "start": 41,
-        "end": 159
+        "timeTag": "00:06",
+        "start": 6,
+        "end": 92
     },
-    "u31201": {
-        "string": "gebruiker - ID u31201: 'Elena Hall' gebruikt fiets ID:f714",
+    "u54601": {
+        "string": "gebruiker - ID u54601: 'Anthony Pluto' gebruikt fiets ID:f879",
         "bikes": [
-            "f714"
+            "f879"
         ],
-        "progress": 4,
-        "timeTag": "00:41",
-        "start": 41,
-        "end": 91
-    },
-    "u43115": {
-        "string": "gebruiker - ID u43115: 'Aurora Winky' gebruikt fiets ID:f1568",
-        "bikes": [
-            "f1568"
-        ],
-        "progress": 3,
-        "timeTag": "00:41",
-        "start": 41,
-        "end": 97
-    },
-    "u33447": {
-        "string": "gebruiker - ID u33447: 'Aria Murray' gebruikt fiets ID:f2593",
-        "bikes": [
-            "f2593"
-        ],
-        "progress": 3,
-        "timeTag": "00:41",
-        "start": 41,
-        "end": 100
+        "progress": 0,
+        "timeTag": "00:06",
+        "start": 6,
+        "end": 126
     }
 }

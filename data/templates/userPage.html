@@ -26,12 +26,15 @@
                 overflow: hidden;
             }
 
+            body {
+                margin-right: 5vw;
+                margin-left: 5vw;
+            }
+
             .container {
                 display: flex;
                 flex-direction: row;
                 border-top: 2px solid black;
-                margin-right: 5vw;
-                margin-left: 5vw;
             }
 
             .container > * {
@@ -89,6 +92,7 @@
     <body>
         <header>
             <a class="home" href="../home.html"><button>Home</button></a>
+            <a class="stations" href="../stations.html"><button>stations</button></a>
         </header>
         <div class="container">
             <div class="info">
@@ -106,9 +110,9 @@
         <div class="logs">
             <p>logs:</p>
             <ul>
-                {% for message in loglist %}
+                {% for log in loglist %}
                 <li>
-                    <p>{{ message }}</p>
+                    <p>{{ log["message"] }} ({{ log["timeStamp"] }})</p>
                 </li>
                 {% endfor %}
             </ul>

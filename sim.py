@@ -4,7 +4,7 @@ import keyboard
 from parsers import pickle_to_dict, dict_to_pickle, dict_to_json, json_to_dict, vals, tick_to_time, timestamp
 from infoFill import save_data, gen_new_sim
 from getRandom import getRandom
-from website import get_home_page, get_user_page
+from website import get_home_page, get_user_page, get_station_list
 from infoFill import delete_folder_content
 from classes import Rit
 
@@ -58,6 +58,8 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
 
     prev_sec = 0
     stop = False
+
+    get_station_list(stations)
 
     while (stop == False):
         sim_minutes += 1
@@ -122,6 +124,9 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
         #checking which stations are almost full
         almost_full = [station for station in stations if (len(station.get_slots("full")) >= 0.8*len(station.slots))]
         
+        if keyboard.is_pressed('g'):
+            stop = True
+        
         #checking which stations are almost empty
         almost_empty = [station for station in stations if (len(station.get_slots("empty")) >= 0.8*len(station.slots))]
 
@@ -163,6 +168,9 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
         
         print(f"{sim_minutes} ({real_seconds} real time seconds)")
         
+        if keyboard.is_pressed('g'):
+            stop = True
+
         #update site info every real second
         if (prev_sec != real_seconds) or (prev_sec == 0):
             get_home_page(site_info)
@@ -170,6 +178,8 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
                 for rit in moment:
                     #updating rider progress bar
                     get_user_page(site_info, rit.user.ID, userInfo)
+            #updating station info
+
         #stop complete loop
 
         prev_sec = real_seconds
@@ -189,4 +199,4 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
     dict_to_json("userInfo.json", userInfo)
     save_data()
     
-loop(600)
+loop(60)
