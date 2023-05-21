@@ -1,6 +1,5 @@
 import random
 from parsers import json_to_dict, vals
-import json
 
 
 class Station():

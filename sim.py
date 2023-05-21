@@ -2,8 +2,7 @@ import time
 import random
 import keyboard
 from parsers import pickle_to_dict, dict_to_pickle, dict_to_json, json_to_dict, vals, tick_to_time, timestamp
-from infoFill import save_data, gen_new_sim
-from getRandom import getRandom
+from infoFill import save_data, gen_new_sim, getRandom
 from website import get_home_page, get_user_page, get_station_list, get_station_info
 from infoFill import delete_folder_content
 from classes import Rit

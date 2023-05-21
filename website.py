@@ -40,7 +40,6 @@ def get_station_list(stations):
 def get_station_info(station):
     environment = Environment(loader=FileSystemLoader("data/templates/"))
     template = environment.get_template("station.html")
-    slotsInUse = len(station.get_slots("full"))
     with open(f"_site/stations/{station.ID}.html", mode="w", encoding="utf-8") as message:
         message.write(template.render(
             thisStation = station

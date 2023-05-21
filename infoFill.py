@@ -3,6 +3,9 @@ from parsers import json_to_dict, dict_to_pickle, pickle_to_dict
 from classes import *
 import os
 
+def getRandom(list):
+    return list[random.randint(0, (len(list)-1))]
+
 def delete_folder_content(folder_path):
     for filename in os.listdir(folder_path):
         file_path = os.path.join(folder_path, filename)
