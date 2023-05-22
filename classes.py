@@ -103,11 +103,13 @@ class Gebruiker():
             print(f"ERROR: {self.userType} {self.ID} cannot store a bike because he doesn't have one")
         else:
             i = 0
+            j = 0
             for bike in self.bikes:
-                if (bike is not None) and (i < amount):
+                if (bike is not None) and (j < amount):
                     if (len(emptySlots) == 0):
                         print(f"ERROR: {self.userType} {self.ID} cannot store bike {bike.ID}: station full")
                     else:
+                        j += 1
                         slot = emptySlots[random.randint(0, len(emptySlots)-1)]
                         self.latestLog = f"stored {bike.ID} into slot {slot.ID} at station {station.ID}"
                         print(f"log: user {self.ID} stored {bike.ID} into slot {slot.ID} at station {station.ID}")
@@ -129,6 +131,7 @@ class Gebruiker():
                     else:
                         slot = fullSlots[random.randint(0, len(fullSlots)-1)]
                         self.latestLog = f"taken {slot.bike.ID} from slot {slot.ID} at station {station.ID}"
+                        print(f"log: user {self.ID} has taken {slot.bike.ID} from slot {slot.ID} at station {station.ID}")
                         self.bikes[i] = slot.get_bike()
                 i += 1
         else:

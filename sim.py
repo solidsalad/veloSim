@@ -194,6 +194,9 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
 
         if keyboard.is_pressed('g'):
             stop = True
+    
+    #to do: alle fietsen terugbrengen naar stations
+    
     #save data for next time
     sim_save = {"runningTime": time.time() - sim_start, "sim_seconds": sim_minutes, "riders": riders, "walking": walking, "bikesInUse": bikesInUse, "almost_empty": almost_empty, "almost_full": almost_full, "currently_transp": currently_transp, "available_transp": available_transp}
     dict_to_pickle(saveTo, sim_save)
@@ -201,4 +204,4 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
     dict_to_json("userInfo.json", userInfo)
     save_data()
     
-loop(600, 'sim.pkl')
+loop(600)
