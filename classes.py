@@ -84,7 +84,7 @@ class Gebruiker():
 
     def __str__(self):
         if (len(vals(self.bikes)) == 0):
-            user_str = f"{self.userType} - ID {self.ID}: '{self.naam}' geen fiets"
+            user_str = f"{self.userType} - ID {self.ID}: '{self.naam}' - geen fiets"
         else:
             user_str = f"{self.userType} - ID {self.ID}: '{self.naam}' gebruikt fiets ID:"
             for bike in vals(self.bikes):

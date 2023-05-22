@@ -99,6 +99,8 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
                         #end trip
                         rit.drop_bike(stat)
                         walking.append(rit.user)
+                        #update user string (geen fiets)
+                        site_info[f"{rit.user.ID}"]["string"] = str(rit.user)
                         #log return of bike
                         userInfo[f"{rit.user.ID}"]["log"].append({"timeStamp": timestamp(simTime), "message": rit.user.latestLog})
                         get_user_page(site_info, rit.user.ID, userInfo)
@@ -196,7 +198,7 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
             stop = True
     
     #to do: alle fietsen terugbrengen naar stations
-    
+
     #save data for next time
     sim_save = {"runningTime": time.time() - sim_start, "sim_seconds": sim_minutes, "riders": riders, "walking": walking, "bikesInUse": bikesInUse, "almost_empty": almost_empty, "almost_full": almost_full, "currently_transp": currently_transp, "available_transp": available_transp}
     dict_to_pickle(saveTo, sim_save)
