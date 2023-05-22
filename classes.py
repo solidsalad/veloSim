@@ -112,7 +112,7 @@ class Gebruiker():
                         self.latestLog = f"stored {bike.ID} into slot {slot.ID} at station {station.ID}"
                         print(f"log: user {self.ID} stored {bike.ID} into slot {slot.ID} at station {station.ID}")
                         slot.store_bike(bike)
-                        bike = None
+                        self.bikes[i] = None
                 i += 1
 
     def user_get_bike(self, station, amount=1):
