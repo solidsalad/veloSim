@@ -8,6 +8,9 @@ from infoFill import delete_folder_content
 from classes import Rit
 
 def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
+
+    save = True
+
     if (saveFile is None):
         gen_new_sim()
         delete_folder_content("_site/users")
@@ -65,6 +68,7 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
         real_seconds = int(time.time() - sim_start)
         start_time = time.time()  # Start time of the iteration
         simTime = tick_to_time(sim_minutes)
+        chosenStation = None
 
 
         #getting bike
@@ -89,10 +93,107 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
                     get_user_page(site_info, user.ID, userInfo)
                     walking.remove(user)
 
+        #manual actions
+        if keyboard.is_pressed('ctrl'):
+            print("\npause -- manuele interventie\n")
+            answer = input("velo menu:\n1. Fiets ontlenen\n2. fiets terugbrengen\n3. verder gaan met simulatie\n\nmaak je keuze: ")
+            #fiets ontlenen
+            if (answer == "1"):
+                #user kiezen
+                bikeTaker = None
+                uOk = False
+                while (uOk == False):
+                    userChoice = input("\nkies gebruiker ID: u")
+                    for walker in walking:
+                        if (walker.ID == f"u{userChoice}"):
+                            bikeTaker = walker
+                            uOk = True
+                    if (bikeTaker == None):
+                        print(f'\nsorry, gebruiker u{userChoice} bestaat niet of heeft momenteel al een fiets, gelieve een andere gebruiker te kiezen:')
+                #station kiezen
+                chosenStation = None
+                sOk = False
+                while (sOk == False):
+                    statChoice = input("\nkies station ID: st")
+                    for temp_station in stations:
+                        if (temp_station.ID == f"st{statChoice}"):
+                            chosenStation = temp_station
+                            if (len(chosenStation.get_slots("empty")) < len(stat.slots)):
+                                sOk = True
+                            else:
+                                print(f'\n\n{len(chosenStation.get_slots("empty"))} < {len(stat.slots)}')
+                                print("station is momenteel leeg, gelieve een ander station te kiezen:")
+                    if (chosenStation == None):
+                        print(f'\nsorry, station st{statChoice} bestaat niet , gelieve een ander station te kiezen:')                
+                #fiets nemen
+                endTime = sim_minutes + random.randint(20,120)
+                if str(endTime) not in riders.keys():
+                    riders[f"{endTime}"] = []
+                thisRit = Rit(sim_minutes, endTime, bikeTaker, chosenStation)
+                #log taking bike + timestamp
+                userInfo[f"{bikeTaker.ID}"]["log"].append({"timeStamp": timestamp(simTime), "message": bikeTaker.latestLog})
+                riders[f"{endTime}"].append(thisRit)
+                #log to site info
+                if (str(bikeTaker.ID) in site_info.keys()):
+                    del site_info[f"{bikeTaker.ID}"]
+                userString = str(bikeTaker)
+                userBikes = [bike.ID for bike in bikeTaker.bikes]
+                site_info[f"{bikeTaker.ID}"] = {"string": userString, "bikes": userBikes, "progress": 0, "timeTag": f"{timestamp(simTime)}", "start": sim_minutes, "end": endTime}
+                get_user_page(site_info, bikeTaker.ID, userInfo)
+                walking.remove(bikeTaker)                
+            #fiets terugbrengen
+            elif (answer == "2"):
+                #user kiezen
+                ride = None
+                uOk = False
+                while (uOk == False):
+                    userChoice = input("\nkies fietser ID: u")
+                    for this_timestamp in riders.values():
+                        for this_rit in this_timestamp:    
+                            if (this_rit.user.ID == f"u{userChoice}"):
+                                this_ride = this_rit
+                                uOk = True
+                    if (this_ride == None):
+                        print(f'\nsorry, gebruiker u{userChoice} bestaat niet of heeft geen fiets, gelieve een andere fietser te kiezen:')
+                #station kiezen
+                chosenStation = None
+                sOk = False
+                while (sOk == False):
+                    statChoice = input("\nkies station ID: st")
+                    for temp_station in stations:
+                        if (temp_station.ID == f"st{statChoice}"):
+                            chosenStation = temp_station
+                            if (len(chosenStation.get_slots("full")) < len(stat.slots)):
+                                sOk = True
+                            else:
+                                print("station is momenteel vol, gelieve een ander station te kiezen:")
+                    if (chosenStation == None):
+                        print(f'\nsorry, station st{statChoice} bestaat niet , gelieve een ander station te kiezen:')
+
+                #setting end time to current tick
+                if str(sim_minutes) not in riders.keys():
+                    riders[f"{sim_minutes}"] = []
+                riders[f"{sim_minutes}"].append(rit)
+                #updating ride length
+                site_info[f"{this_ride.user.ID}"]["end"] = sim_minutes
+                
+                #deleting it from previous endTime
+                if (len(riders[f"{this_ride.endTime}"]) > 1):
+                    riders[f"{this_ride.endTime}"].remove(rit)
+                else:
+                    del riders[f"{this_ride.endTime}"]
+            elif (answer == "3"):
+                continue
+            else:
+                print("onbekend commando -> simulatie gaat verder")
+
         #returning bike
         if (str(sim_minutes) in riders.keys()):
                 for rit in riders[f"{sim_minutes}"]:
-                    stat = getRandom(stations)
+                    if (chosenStation == None):
+                        stat = getRandom(stations)
+                    else:
+                        stat = chosenStation
                     if (len(stat.get_slots("full")) < len(stat.slots)):
                         #setting progress bars to 100% because ride is done
                         site_info[f"{rit.user.ID}"]["progress"] = 100
@@ -128,62 +229,6 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
         if keyboard.is_pressed('g'):
             stop = True
 
-        #manual actions
-        if keyboard.is_pressed('ctrl'):
-            print("\npause -- manuele interventie\n")
-            answer = input("velo menu:\n1. Fiets ontlenen\n2. fiets terugbrengen\n3. verder gaan met simulatie\n\nmaak je keuze: ")
-            #fiets ontlenen
-            if (answer == "1"):
-                #user kiezen
-                bikeTaker = None
-                uOk = False
-                while (uOk == False):
-                    userChoice = input("\nkies gebruiker ID: u")
-                    for walker in walking:
-                        if (walker.ID == f"u{userChoice}"):
-                            bikeTaker = walker
-                            uOk = True
-                    if (bikeTaker == None):
-                        print(f'\nsorry, gebruiker u{userChoice} bestaat niet of heeft momenteel al een fiets, gelieve een andere gebruiker te kiezen:')
-                #station kiezen
-                chosenStation = None
-                sOk = False
-                while (sOk == False):
-                    statChoice = input("\nkies station ID: st")
-                    for temp_station in stations:
-                        if (temp_station.ID == f"st{statChoice}"):
-                            chosenStation = temp_station
-                            if (len(chosenStation.get_slots("empty")) < len(stat.slots)):
-                                sOk = True
-                            else:
-                                print("station is momenteel leeg, gelieve een ander station te kiezen:")
-                    if (chosenStation == None):
-                        print(f'\nsorry, station st{statChoice} bestaat niet , gelieve een ander station te kiezen:')                
-                #fiets nemen
-                endTime = sim_minutes + random.randint(20,120)
-                if str(endTime) not in riders.keys():
-                    riders[f"{endTime}"] = []
-                thisRit = Rit(sim_minutes, endTime, bikeTaker, chosenStation)
-                #log taking bike + timestamp
-                userInfo[f"{bikeTaker.ID}"]["log"].append({"timeStamp": timestamp(simTime), "message": bikeTaker.latestLog})
-                riders[f"{endTime}"].append(thisRit)
-                #log to site info
-                if (str(bikeTaker.ID) in site_info.keys()):
-                    del site_info[f"{bikeTaker.ID}"]
-                userString = str(bikeTaker)
-                userBikes = [bike.ID for bike in bikeTaker.bikes]
-                site_info[f"{bikeTaker.ID}"] = {"string": userString, "bikes": userBikes, "progress": 0, "timeTag": f"{timestamp(simTime)}", "start": sim_minutes, "end": endTime}
-                get_user_page(site_info, bikeTaker.ID, userInfo)
-                walking.remove(bikeTaker)                
-            #fiets terugbrengen
-            elif (answer == "2"):
-                continue
-            elif (answer == "3"):
-                continue
-            else:
-                print("onbekend commando -> simulatie gaat verder")
-
-        
         #checking which stations are almost empty
         almost_empty = [station for station in stations if (len(station.get_slots("empty")) >= 0.8*len(station.slots))]
 
@@ -256,10 +301,11 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
     #to do: alle fietsen terugbrengen naar stations
 
     #save data for next time
-    sim_save = {"runningTime": time.time() - sim_start, "sim_seconds": sim_minutes, "riders": riders, "walking": walking, "bikesInUse": bikesInUse, "almost_empty": almost_empty, "almost_full": almost_full, "currently_transp": currently_transp, "available_transp": available_transp}
-    dict_to_pickle(saveTo, sim_save)
-    dict_to_json("site_info.json", site_info)
-    dict_to_json("userInfo.json", userInfo)
-    save_data()
+    if (save == True):
+        sim_save = {"runningTime": time.time() - sim_start, "sim_seconds": sim_minutes, "riders": riders, "walking": walking, "bikesInUse": bikesInUse, "almost_empty": almost_empty, "almost_full": almost_full, "currently_transp": currently_transp, "available_transp": available_transp}
+        dict_to_pickle(saveTo, sim_save)
+        dict_to_json("site_info.json", site_info)
+        dict_to_json("userInfo.json", userInfo)
+        save_data()
     
-loop(600)
+loop(60, 'sim.pkl')
