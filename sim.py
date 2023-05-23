@@ -9,7 +9,10 @@ from classes import Rit
 
 def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
 
-    save = True
+    if (saveTo is None):
+        save = False
+    else:
+        save = True
 
     if (saveFile is None):
         gen_new_sim()
@@ -42,7 +45,6 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
     
     data = pickle_to_dict("data.pkl")
     gebruikers = data["gebruikers"]
-    fietsen = data["fietsen"]
     stations = data["stations"]
     transporteurs = data["transporteurs"]
 
@@ -65,7 +67,7 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
 
     while (stop == False):
         sim_minutes += 1
-        real_seconds = int(time.time() - sim_start)
+        real_seconds = int(time.time() - sim_start) + 1
         start_time = time.time()  # Start time of the iteration
         simTime = tick_to_time(sim_minutes)
         chosenStation = None
@@ -95,7 +97,7 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
 
         #manual actions
         if keyboard.is_pressed('ctrl'):
-            print("\npause -- manuele interventie\n")
+            print(f"\npause -- manuele interventie ({timestamp(simTime)})\n")
             answer = input("velo menu:\n1. Fiets ontlenen\n2. fiets terugbrengen\n3. verder gaan met simulatie\n\nmaak je keuze: ")
             #fiets ontlenen
             if (answer == "1"):
@@ -144,7 +146,7 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
             #fiets terugbrengen
             elif (answer == "2"):
                 #user kiezen
-                ride = None
+                this_ride = None
                 uOk = False
                 while (uOk == False):
                     userChoice = input("\nkies fietser ID: u")
@@ -170,18 +172,25 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
                     if (chosenStation == None):
                         print(f'\nsorry, station st{statChoice} bestaat niet , gelieve een ander station te kiezen:')
 
-                #setting end time to current tick
-                if str(sim_minutes) not in riders.keys():
-                    riders[f"{sim_minutes}"] = []
-                riders[f"{sim_minutes}"].append(rit)
-                #updating ride length
-                site_info[f"{this_ride.user.ID}"]["end"] = sim_minutes
-                
-                #deleting it from previous endTime
-                if (len(riders[f"{this_ride.endTime}"]) > 1):
-                    riders[f"{this_ride.endTime}"].remove(rit)
+                if (this_ride.startTime >= sim_minutes):
+                    newEndTime = sim_minutes + 1
                 else:
-                    del riders[f"{this_ride.endTime}"]
+                    newEndTime = sim_minutes
+
+                if (this_ride.endTime != sim_minutes):
+                    #deleting it from previous endTime
+                    if (len(riders[f"{this_ride.endTime}"]) > 1):
+                        riders[f"{this_ride.endTime}"].remove(this_ride)
+                    else:
+                        del riders[f"{this_ride.endTime}"]
+
+                    #setting end time to current tick
+                    this_ride.endTime = newEndTime
+                    if str(newEndTime) not in riders.keys():
+                        riders[f"{newEndTime}"] = []
+                    riders[f"{newEndTime}"].append(this_ride)
+                    #updating ride length
+                    site_info[f"{this_ride.user.ID}"]["end"] = newEndTime
             elif (answer == "3"):
                 continue
             else:
@@ -190,7 +199,7 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
         #returning bike
         if (str(sim_minutes) in riders.keys()):
                 for rit in riders[f"{sim_minutes}"]:
-                    if (chosenStation == None):
+                    if (chosenStation == None) or (rit != this_ride):
                         stat = getRandom(stations)
                     else:
                         stat = chosenStation
@@ -307,5 +316,3 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
         dict_to_json("site_info.json", site_info)
         dict_to_json("userInfo.json", userInfo)
         save_data()
-    
-loop(60, 'sim.pkl')
