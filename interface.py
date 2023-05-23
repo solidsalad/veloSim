@@ -64,7 +64,7 @@ if(startKeuze == "2"):
             openFrom = input("vanuit welk bestand wilt u verder gaan? ")
         saveFile = openFrom
     else:
-        saveTo = None
+        saveFile = None
     
     saveProgress = askOption("wenst u de simulatie op te slaan bij afsluit? (j/n) ", ["j","n"])
     if (saveProgress == 'j'):

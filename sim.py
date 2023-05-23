@@ -45,6 +45,7 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
     
     data = pickle_to_dict("data.pkl")
     gebruikers = data["gebruikers"]
+    fietsen = data["fietsen"]
     stations = data["stations"]
     transporteurs = data["transporteurs"]
 
@@ -315,4 +316,4 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
         dict_to_pickle(saveTo, sim_save)
         dict_to_json("site_info.json", site_info)
         dict_to_json("userInfo.json", userInfo)
-        save_data()
+        save_data(stations, gebruikers, fietsen, transporteurs)

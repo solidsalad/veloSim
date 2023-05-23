@@ -73,7 +73,7 @@ def gen_new_sim(aantalGebruikers = 55000, aantalFietsen = 4200, aantalTransporte
         fill_stations(stations, fietsen)
         save_data(stations, gebruikers, fietsen, transporteurs)
 
-def save_data(stations=pickle_to_dict("data.pkl")["stations"], gebruikers=pickle_to_dict("data.pkl")["gebruikers"], fietsen=pickle_to_dict("data.pkl")["fietsen"], transporteurs=pickle_to_dict("data.pkl")["transporteurs"]):
+def save_data(stations, gebruikers, fietsen, transporteurs):
     info = {"stations": stations, "gebruikers": gebruikers, "fietsen": fietsen, "transporteurs": transporteurs}
     dict_to_pickle("data.pkl", info)
 

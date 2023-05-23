@@ -1,7 +1,10 @@
 -- velo sim user manual --
 
+launch site by live-previewing home.html
+launch program by launching interface.py
+
 while running simulation :
     - hold 'G' to save and quit (this might take a few seconds)
     - hold ctrl for manual actions or to pause the simulation
 
-always end your saveFile names with ".pkl" in order for them to work (problems as a reesult of breaking this rule are not my responsability)
+always end your saveFile names with ".pkl" in order for them to work (problems as a result of breaking this rule are not my responsibility)
