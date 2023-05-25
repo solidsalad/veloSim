@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+    	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .meter {
+                box-sizing: content-box;
+                height: 3px; /* Can be anything */
+                position: relative;
+                margin: 20px 7px 20px 0; /* Just for demo spacing */
+                background: #555;
+                border-radius: 25px;    
+                padding: 3px;
+            }
+            .meter > span {
+                display: block;
+                height: 100%;
+                border-top-right-radius: 8px;
+                border-bottom-right-radius: 8px;
+                border-top-left-radius: 8px;
+                border-bottom-left-radius: 8px;
+                background-color: rgb(43, 194, 83);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .container {
+                display: flex;
+                flex-direction: row;
+                border-top: 2px solid black;
+                margin-right: 5vw;
+                margin-left: 5vw;
+            }
+
+            .container > * {
+                max-width: 55%;
+                height: 100%;
+            }
+
+            .progressBar{
+                margin-left: auto;
+            }
+
+            .rideLen {
+                text-align: center;
+            }
+
+            header * {
+                align-content: center;
+                padding: 0px;
+            }
+
+            header, .time {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                background-color: white;
+            }
+
+            header, .time  {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 8%;
+                padding-top: 0;
+            }
+
+            header {
+                padding: 30px 8%;
+            }
+
+            header button, .time > * {
+                padding: 9px 25px;
+                background-color: rgb(255, 255, 255);
+                border-top: 2px solid black;
+                border-bottom: 2px solid black;
+                transition: all 0.3s ease 0s;
+            }
+
+            header button {
+                cursor: pointer;
+            }
+
+            header button:hover {
+                background-color: rgba(0, 0, 0, 0.8);
+                color: white
+            }
+        </style>
+    	<title>home</title>
+    </head>
+    <body>
+        <header>
+            <a class="stations" href="stations.html"><button>stations</button></a>
+        </header>
+        <ul class="riders">
+            <div class="time">
+                <p>year 0</p>
+                <p>12:03</p>
+                <p>day 0</p>
+            </div>
+            
+                
+                    <div class="container">
+                        <div class="info">
+                            <a class="/u38303" href="users/u38303.html">gebruiker - ID u38303: 'Leah King' gebruikt fiets ID:f851</a>
+                            <p class="timestamp">started at 12:03</p>
+                        </div>
+                        <div class="progressBar" style="width: 33%">
+                            <div class="meter">
+                                <span style="width: 0%"></span>
+                                <p class="rideLen">ride length: 21 minutes</p>
+                            </div>
+                        </div>
+                        <p class="percentage">0%</p>
+                    </div>
+                
+            
+                
+                    <div class="container">
+                        <div class="info">
+                            <a class="/u17927" href="users/u17927.html">gebruiker - ID u17927: 'Eric Addams' gebruikt fiets ID:f2825</a>
+                            <p class="timestamp">started at 12:03</p>
+                        </div>
+                        <div class="progressBar" style="width: 33%">
+                            <div class="meter">
+                                <span style="width: 0%"></span>
+                                <p class="rideLen">ride length: 45 minutes</p>
+                            </div>
+                        </div>
+                        <p class="percentage">0%</p>
+                    </div>
+                
+            
+                
+                    <div class="container">
+                        <div class="info">
+                            <a class="/u54301" href="users/u54301.html">gebruiker - ID u54301: 'Garfield Smith' gebruikt fiets ID:f246</a>
+                            <p class="timestamp">started at 12:02</p>
+                        </div>
+                        <div class="progressBar" style="width: 33%">
+                            <div class="meter">
+                                <span style="width: 1%"></span>
+                                <p class="rideLen">ride length: 99 minutes</p>
+                            </div>
+                        </div>
+                        <p class="percentage">1%</p>
+                    </div>
+                
+            
+                
+                    <div class="container">
+                        <div class="info">
+                            <a class="/u43644" href="users/u43644.html">gebruiker - ID u43644: 'Emma Winky' gebruikt fiets ID:f1617</a>
+                            <p class="timestamp">started at 12:02</p>
+                        </div>
+                        <div class="progressBar" style="width: 33%">
+                            <div class="meter">
+                                <span style="width: 5%"></span>
+                                <p class="rideLen">ride length: 20 minutes</p>
+                            </div>
+                        </div>
+                        <p class="percentage">5%</p>
+                    </div>
+                
+            
+                
+                    <div class="container">
+                        <div class="info">
+                            <a class="/u48519" href="users/u48519.html">gebruiker - ID u48519: 'Aria Bond' gebruikt fiets ID:f2795</a>
+                            <p class="timestamp">started at 12:02</p>
+                        </div>
+                        <div class="progressBar" style="width: 33%">
+                            <div class="meter">
+                                <span style="width: 0%"></span>
+                                <p class="rideLen">ride length: 116 minutes</p>
+                            </div>
+                        </div>
+                        <p class="percentage">0%</p>
+                    </div>
+                
+            
+                
+                    <div class="container">
+                        <div class="info">
+                            <a class="/u26373" href="users/u26373.html">gebruiker - ID u26373: 'Jon Clark' gebruikt fiets ID:f4132</a>
+                            <p class="timestamp">started at 12:02</p>
+                        </div>
+                        <div class="progressBar" style="width: 33%">
+                            <div class="meter">
+                                <span style="width: 1%"></span>
+                                <p class="rideLen">ride length: 51 minutes</p>
+                            </div>
+                        </div>
+                        <p class="percentage">1%</p>
+                    </div>
+                
+            
+                
+                    <div class="container">
+                        <div class="info">
+                            <a class="/u22587" href="users/u22587.html">gebruiker - ID u22587: 'Alexander Skinner' gebruikt fiets ID:f2250</a>
+                            <p class="timestamp">started at 12:02</p>
+                        </div>
+                        <div class="progressBar" style="width: 33%">
+                            <div class="meter">
+                                <span style="width: 2%"></span>
+                                <p class="rideLen">ride length: 50 minutes</p>
+                            </div>
+                        </div>
+                        <p class="percentage">2%</p>
+                    </div>
+                
+            
+                
+                    <div class="container">
+                        <div class="info">
+                            <a class="/u37859" href="users/u37859.html">gebruiker - ID u37859: 'Jon Simpson' gebruikt fiets ID:f2954</a>
+                            <p class="timestamp">started at 12:02</p>
+                        </div>
+                        <div class="progressBar" style="width: 33%">
+                            <div class="meter">
+                                <span style="width: 3%"></span>
+                                <p class="rideLen">ride length: 28 minutes</p>
+                            </div>
+                        </div>
+                        <p class="percentage">3%</p>
+                    </div>
+                
+            
+                
+                    <div class="container">
+                        <div class="info">
+                            <a class="/u38331" href="users/u38331.html">gebruiker - ID u38331: 'Lucy Rodriguez' gebruikt fiets ID:f714</a>
+                            <p class="timestamp">started at 12:02</p>
+                        </div>
+                        <div class="progressBar" style="width: 33%">
+                            <div class="meter">
+                                <span style="width: 0%"></span>
+                                <p class="rideLen">ride length: 105 minutes</p>
+                            </div>
+                        </div>
+                        <p class="percentage">0%</p>
+                    </div>
+                
+            
+                
+                    <div class="container">
+                        <div class="info">
+                            <a class="/u45415" href="users/u45415.html">gebruiker - ID u45415: 'Noah Hall' gebruikt fiets ID:f3357</a>
+                            <p class="timestamp">started at 12:02</p>
+                        </div>
+                        <div class="progressBar" style="width: 33%">
+                            <div class="meter">
+                                <span style="width: 1%"></span>
+                                <p class="rideLen">ride length: 59 minutes</p>
+                            </div>
+                        </div>
+                        <p class="percentage">1%</p>
+                    </div>
+                
+            
+        </ul>
+    </body>
+    </html>
