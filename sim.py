@@ -99,6 +99,7 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
 
         #manual actions
         if keyboard.is_pressed('ctrl'):
+            pauseBegin = time.time()
             print(f"\npause -- manuele interventie ({timestamp(simTime)})\n")
             answer = input("velo menu:\n1. Fiets ontlenen\n2. fiets terugbrengen\n3. verder gaan met simulatie\n\nmaak je keuze: ")
             #fiets ontlenen
@@ -122,10 +123,10 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
                     for temp_station in stations:
                         if (temp_station.ID == f"st{statChoice}"):
                             chosenStation = temp_station
-                            if (len(chosenStation.get_slots("empty")) < len(stat.slots)):
+                            if (len(chosenStation.get_slots("empty")) < len(chosenStation.slots)):
                                 sOk = True
                             else:
-                                print(f'\n\n{len(chosenStation.get_slots("empty"))} < {len(stat.slots)}')
+                                print(f'\n\n{len(chosenStation.get_slots("empty"))} < {len(chosenStation.slots)}')
                                 print("station is momenteel leeg, gelieve een ander station te kiezen:")
                     if (chosenStation == None):
                         print(f'\nsorry, station st{statChoice} bestaat niet , gelieve een ander station te kiezen:')                
@@ -167,7 +168,7 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
                     for temp_station in stations:
                         if (temp_station.ID == f"st{statChoice}"):
                             chosenStation = temp_station
-                            if (len(chosenStation.get_slots("full")) < len(stat.slots)):
+                            if (len(chosenStation.get_slots("full")) < len(chosenStation.slots)):
                                 sOk = True
                             else:
                                 print("station is momenteel vol, gelieve een ander station te kiezen:")
@@ -194,9 +195,14 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
                     #updating ride length
                     site_info[f"{this_ride.user.ID}"]["end"] = newEndTime
             elif (answer == "3"):
-                continue
+                pass
             else:
                 print("onbekend commando -> simulatie gaat verder")
+            #account for pause time
+            pauseEnd = time.time()
+            pauseTime = pauseEnd - pauseBegin
+            sim_start += pauseTime
+
 
         #returning bike
         if (str(sim_minutes) in riders.keys()):
