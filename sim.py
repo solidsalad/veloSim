@@ -63,6 +63,7 @@ def loop(speed_factor, saveFile=None, saveTo="sim.pkl"):
 
     prev_sec = 0
     stop = False
+    this_ride = None
 
     get_station_list(stations)
 
